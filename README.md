@@ -4,7 +4,7 @@ Repositório feito para o Trabalho Interdisciplinar entre Fundamentos de Engenha
 
 **Integrantes:**
 - Lucas Maia Marques Pinheiro
-- André Fortini de Melo
+- André Fortini de Mello
 - Ana Luiza Cavalcante Oliveira
 
 ## Explicação de pastas e subpastas
