@@ -19,17 +19,20 @@ Repositório feito para o Trabalho Interdisciplinar entre Fundamentos de Engenha
 
 **assinaturas.md**: guarda a assinatura das funções
 
+
 - src
 
 **pasta /include/:** contém arquivos .h; cabeçalhos de funções, declaração de structs, constantes globais e demais coisas que serão incluídas no código em si
 
 **pasta /modules/:** cóntem a implementação real das funções
 
+
 - tests
 
 **pasta /munit/:** guarda os testes automatizados da ferramenta Mule/MUnit
 
 **testes-manuais.md**: guarda casos de teste que serão executados manualmente
+
 
 - media
 
