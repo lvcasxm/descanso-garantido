@@ -1,7 +1,9 @@
 # Product Backlog
 
 **Versão:** 1.0
+
 **Última atualização:** 14-11-2025 | 13:06
+
 **Autores:** Lucas, André e Ana
 
 ---
