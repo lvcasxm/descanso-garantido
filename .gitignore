@@ -1,0 +1,5 @@
+*.o
+*.out
+*.exe
+/bin/
+tests/run_tests
