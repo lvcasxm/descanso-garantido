@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.2
+**Versão:** 2.3
 
-**Última atualização:** 15-11-2025 | 14:43
+**Última atualização:** 15-11-2025 | 14:48
 
 **Autores:** Lucas, André e Ana
 
@@ -43,11 +43,11 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 **Descrição:** Ao iniciar o programa, o sistema deve exibir um menu exibindo opções de cadastro, pesquisa e saída. O menu deve permanecer em loop até que o usuário opte por sair.
 
 **Critérios de aceite:** 
-- Exibir todas as funções especificadas no épico
-- Menu deve corretamente permanecer em loop até que o usuário decida sair
-- Usuário consegue navegar para cada funcionalidade corretamente
-- Usuário consegue retornar ao menu principal caso haja necessidade
-- Todas as informações deverão ser persistidas em arquivos binários
+- Exibir todas as funções especificadas no épico.
+- Menu deve corretamente permanecer em loop até que o usuário decida sair.
+- Usuário consegue navegar para cada funcionalidade corretamente.
+- Usuário consegue retornar ao menu principal caso haja necessidade.
+- Todas as informações deverão ser persistidas em arquivos binários.
 
 **Sprint:** [a definir]
 
@@ -60,8 +60,25 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Critérios de aceite:**
 - O sistema deve garantir que não haja dois clientes com o mesmo código.
-- Telefone deve ser escrito no padrão (xx) xxxx-xxxx
-- Endereço e nome devem ser armazenados em string
+- O sistema deve garantir qu não haja dois clientes com exatamente o mesmo nome.
+- Telefone deve ser escrito no padrão (xx) xxxx-xxxx.
+- Endereço e nome devem ser armazenados em string.
+
+**Sprint:** [a definir]
+
+**Prioridade:** [a definir]
+
+**Responsáveis:** [a definir]
+
+### E01-F03: Cadastrar funcionário
+**Descrição:** Essa função deve cadastrar os funcionários do hotel, contendo: código, nome, telefone, cargo e salário.
+
+**Critérios de aceite:** 
+- O sistema deve garantir que não haja dois funcionŕios com o mesmo código.
+- O sistema deve garantir que não haja dois funcionários com exatamente o mesmo nome.
+- Telefone deve ser escrito no padrão (xx) xxxx-xxxx.
+- Endereço e nome devem ser armaazenados em string.
+- Salário deve ser guardado em inteiro
 
 **Sprint:** [a definir]
 
@@ -84,3 +101,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 2.2 | 15-11-2025 | 14:43 | Lucas
 - Adicionei funcionalidade de cadastrar cliente.
+
+### 2.3 | 15-11-2025 | 14:48 | Lucas
+- Adicionei funcionalidade de cadastrar funcionário.
