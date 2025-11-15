@@ -50,4 +50,4 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 - criado texto inicial de explicação do documento e de formatação
 
 ### 2.0 | 15-11-2025 | 14:01 | Lucas
-- adicionando funcionalidades pro sistema. como citado acima, cada funcionalidade tem: descrição, critério de aceite, prioridade, responsável e sprint
+- adicionei épico principal que engloba todas as funcionalidades que serão exibidas no menu principal e que deverão ser descritas depois. caso haja outras não há necesisdade de criar outro épico, só descrevê-las individualmente mesmo
