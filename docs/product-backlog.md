@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.8
+**Versão:** 2.9
 
-**Última atualização:** 15-11-2025 | 18:51
+**Última atualização:** 15-11-2025 | 18:56
 
 **Autores:** Lucas, André e Ana
 
@@ -157,6 +157,20 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Responsáveis:** [a definir]
 
+### E01-F09: Calcular pontos de fidelidade
+**Descrição:** Função deve calcular os pontos de fidelidade de um determinado cliente, que ganha 10 desses pontos para cada diária no hotel.
+
+**Critérios de aceite:**
+- Função deve calcular corretamente os pontos de fidelidade do cliente.
+- Cada diária equivale a 10 pontos.
+- O cliente pode ter várias estadias ao mesmo tempo, e devem ser calculados, portanto, os pontos de cada uma dessas estadias em conjunto
+
+**Sprint:** [a definir]
+
+**Prioridade:** [a definir]
+
+**Responsáveis:** [a definir]
+
 --- 
 
 # Changelog
@@ -190,3 +204,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 2.8 | 15-11-2025 | 18:51 | Lucas
 - Adicionei função de listar estadias de determinado cliente, por meio de seu nome ou código.
+
+### 2.9 | 15-11-2025 | 18:56 | Lucas
+- Adicionei funcionalidade de calcular os pontos de fidelidade de determinado cliente.
