@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.6
+**Versão:** 2.7
 
-**Última atualização:** 15-11-2025 | 18:40
+**Última atualização:** 15-11-2025 | 18:45
 
 **Autores:** Lucas, André e Ana
 
@@ -129,6 +129,20 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Responsáveis:** [a definir]
 
+### E01-F07: Pesquisar clientes e funcionários
+**Descrição:** Essa função permite que, por meio do nome ou código, seja possível exibir todas as informações de cadastro correspondentes a essa determinada pessoa.
+
+**Critérios de aceite:**
+- Deve ser possível pesquisar tanto por nome, quanto por código.
+- O resultado por nome ou código deve ser o mesmo.
+- Deverá ser exibido todas as informações de cadastro da pessoa em forma de lista.
+
+**Sprint:** [a definir]
+
+**Prioridade:** [a definir]
+
+**Responsáveis:** [a definir]
+
 --- 
 
 # Changelog
@@ -156,3 +170,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 2.6 | 15-11-2025 | 18:40 | Lucas
 - Adicionei funcionalidade de dar baixa em estadias.
+
+### 2.7 | 15-11-2025 | 18:45 | Lucas
+- Adicionei funcionalidade de pesquisar por clientes ou funcionários, exibindo na tela todas as informações de cadastro deles.
