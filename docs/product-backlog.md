@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.9
+**Versão:** 3.9
 
-**Última atualização:** 15-11-2025 | 18:56
+**Última atualização:** 15-11-2025 | 19:04
 
 **Autores:** Lucas, André e Ana
 
@@ -26,8 +26,8 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 # Funcionalidades
 
-## Épico: Menu principal do sistema
-**Descrição:** Agrupar todas as funcionalidades relacionadas ao menu inicial do sistema, exibindo funções de cadastro, navegação e saída
+## Épico: Menu principal do sistema, contendo as opções que representam também as principais funcionalidades
+**Descrição:** Agrupar todas as funcionalidades relacionadas ao menu inicial do sistema, exibindo funções de cadastro, navegação e saída.
 
 **Funcionalidades íncluídas:**
 - Exibir menu principal em loop, até que o usuário escolha opção de "Sair".
@@ -171,6 +171,12 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Responsáveis:** [a definir]
 
+## Épico: Persistência de dados por meio de arquivos binários
+**Descrição:** É necessário que as informações permaneçam no armazenamneto do computador para que o fluxo de gerenciamento seja finalizado, evitando re-cadastro toda vez que o aplicativo for fechado e reaberto.
+
+**Funcionalidades incluídas:**
+- Criar, editar e armazenar todas as informações relacionadas a cadastro em arquivos binários.
+
 --- 
 
 # Changelog
@@ -207,3 +213,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 2.9 | 15-11-2025 | 18:56 | Lucas
 - Adicionei funcionalidade de calcular os pontos de fidelidade de determinado cliente.
+
+### 3.9 | 15-11-2025 | 19:04 | Lucas
+- Adicionei novo épico que engloba o requisito geral de persistir com todos os dados do sistema. Segue a mesma formatação do primeiro épico, mas agora com E2-FXX de identificador. Por enquanto criarei sub-funções só para deixar bem claro que vamos dividir todas as informações em arquivos separados e que todas as informações serão devidamente armazenadas no HD.
