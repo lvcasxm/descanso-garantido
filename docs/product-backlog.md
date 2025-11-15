@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 1.0
+**Versão:** 2.0
 
-**Última atualização:** 14-11-2025 | 13:06
+**Última atualização:** 15-11-2025 | 14:01
 
 **Autores:** Lucas, André e Ana
 
@@ -22,9 +22,32 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 - descrição de mudança y
 - descrição de mudança z
 
+---
+
+# Funcionalidades
+
+## Épico: Menu principal do sistema
+**Descrição:** Agrupar todas as funcionalidades relacionadas ao menu inicial do sistema, exibindo funções de cadastro, navegação e saída
+
+## Funcionalidades íncluídas:
+- Exibir menu principal em loop, até que o usuário escolha opção de "Sair".
+- Cadastrar cliente
+- Cadastrar funcionário
+- Cadastrar quarto
+- Cadastrar estadia
+- Pesquisas pelo código dos hóspedes
+- Dar baixa nas estadias
+- Persistir as informações em arquivos binários
+
+**Sprint:** [a definir]
+**Prioridade:** [alta]
+**Responsáveis:** [a definir]
 --- 
 
 # Changelog
 
 ### 1.0 | 14-11-2025 | 13:06 | Lucas
 - criado texto inicial de explicação do documento e de formatação
+
+### 2.0 | 15-11-2025 | 14:01 | Lucas
+- adicionando funcionalidades pro sistema. como citado acima, cada funcionalidade tem: descrição, critério de aceite, prioridade, responsável e sprint
