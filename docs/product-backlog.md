@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.1
+**Versão:** 2.2
 
-**Última atualização:** 15-11-2025 | 14:33
+**Última atualização:** 15-11-2025 | 14:43
 
 **Autores:** Lucas, André e Ana
 
@@ -51,7 +51,21 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Sprint:** [a definir]
 
-**Prioridade:** [alta]
+**Prioridade:** [a definir]
+
+**Responsáveis:** [a definir]
+
+### E01-F02: Cadastrar cliente
+**Descrição:** Essa função deve cadastrar o cliente, contendo as informações: código, nome, endereço e telefone.
+
+**Critérios de aceite:**
+- O sistema deve garantir que não haja dois clientes com o mesmo código.
+- Telefone deve ser escrito no padrão (xx) xxxx-xxxx
+- Endereço e nome devem ser armazenados em string
+
+**Sprint:** [a definir]
+
+**Prioridade:** [a definir]
 
 **Responsáveis:** [a definir]
 
@@ -60,10 +74,13 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 # Changelog
 
 ### 1.0 | 14-11-2025 | 13:06 | Lucas
-- criado texto inicial de explicação do documento e de formatação.
+- Criado texto inicial de explicação do documento e de formatação.
 
 ### 2.0 | 15-11-2025 | 14:01 | Lucas
-- adicionei épico principal que engloba todas as funcionalidades que serão exibidas no menu principal e que deverão ser descritas depois. caso haja outras não há necesisdade de criar outro épico, só descrevê-las individualmente mesmo.
+- Adicionei épico principal que engloba todas as funcionalidades que serão exibidas no menu principal e que deverão ser descritas depois. caso haja outras não há necesisdade de criar outro épico, só descrevê-las individualmente mesmo.
 
 ### 2.1 | 15-11-2025 | 14:33 | Lucas
 - Adicionei primeira funcionalidade derivada do épico principal do sistema; funcionalidade de menu.
+
+### 2.2 | 15-11-2025 | 14:43 | Lucas
+- Adicionei funcionalidade de cadastrar cliente.
