@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.3
+**Versão:** 2.4
 
-**Última atualização:** 15-11-2025 | 14:48
+**Última atualização:** 15-11-2025 | 14:56
 
 **Autores:** Lucas, André e Ana
 
@@ -86,6 +86,18 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Responsáveis:** [a definir]
 
+### E01-F04: Cadastrar quarto
+**Descrição:** Essa função deve cadastrar um quarto, contendo: número do quarto, quantidade de hóspedes, valor da diária e status (desocupado ou ocupado).
+
+**Critérios de aceite:**
+- O sistema deve garantir que não haja dois quartos cadastrados com o mesmo número.
+
+**Sprint:** [a definir]
+
+**Prioridade:** [a definir]
+
+**Responsáveis:** [a definir]
+
 --- 
 
 # Changelog
@@ -104,3 +116,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 2.3 | 15-11-2025 | 14:48 | Lucas
 - Adicionei funcionalidade de cadastrar funcionário.
+
+### 2.4 | 15-11-2025 | 14:56| Lucas
+- Adicionei funcionalidade de cadastrar quarto.
