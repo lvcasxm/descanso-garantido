@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.7
+**Versão:** 2.8
 
-**Última atualização:** 15-11-2025 | 18:45
+**Última atualização:** 15-11-2025 | 18:51
 
 **Autores:** Lucas, André e Ana
 
@@ -143,6 +143,20 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Responsáveis:** [a definir]
 
+### E01-F08: Listar todas as estadias de determinado cliente
+**Descrição:** Por meio de nome ou código, essa função exibe na tela todas as estadias que foram alugadas por determinado cliente.
+
+**Critérios de aceite:**
+- Essa função deve aceitar nome ou código.
+- O resultado para nome ou código tem que ser iguais.
+- Essa função deve listar estadias ativas e estadias que já foram feitas pelo cliente.
+
+**Sprint:** [a definir]
+
+**Prioridade:** [a definir]
+
+**Responsáveis:** [a definir]
+
 --- 
 
 # Changelog
@@ -173,3 +187,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 2.7 | 15-11-2025 | 18:45 | Lucas
 - Adicionei funcionalidade de pesquisar por clientes ou funcionários, exibindo na tela todas as informações de cadastro deles.
+
+### 2.8 | 15-11-2025 | 18:51 | Lucas
+- Adicionei função de listar estadias de determinado cliente, por meio de seu nome ou código.
