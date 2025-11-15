@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.4
+**Versão:** 2.5
 
-**Última atualização:** 15-11-2025 | 14:56
+**Última atualização:** 15-11-2025 | 18:21
 
 **Autores:** Lucas, André e Ana
 
@@ -98,6 +98,22 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Responsáveis:** [a definir]
 
+### E01-F05: Cadastrar estadia
+**Descrição:** Essa função deve cadastrar uma estadia, recebendo: código do cliente, número do quarto, data de entrada, saída, e quantidade de hóspedes.
+
+**Critérios de aceite:**
+- O sistema deve identificar automaticamente um quarto que contenha a quantidade de hóspedes requisitada para estadia. 
+- O quarto que o sistema encontrar há de ter status desocupado.
+- O sistema deve calcular a quantidade de diárias pela subtração do tempo de entrada e saída.
+- Um quarto não pode ter duas estadias ao mesmo tempo.
+- Um cliente não pode fazer duas estadias ao mesmo tempo.
+
+**Sprint:** [a definir]
+
+**Prioridade:** [a definir]
+
+**Responsáveis:** [a definir]
+
 --- 
 
 # Changelog
@@ -117,5 +133,8 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 ### 2.3 | 15-11-2025 | 14:48 | Lucas
 - Adicionei funcionalidade de cadastrar funcionário.
 
-### 2.4 | 15-11-2025 | 14:56| Lucas
+### 2.4 | 15-11-2025 | 14:56 | Lucas
 - Adicionei funcionalidade de cadastrar quarto.
+
+### 2.5 | 15-11-2025 | 18:21 | Lucas
+- Adicionei funcionalidade de cadastrar estadias.
