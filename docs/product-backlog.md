@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 2.5
+**Versão:** 2.6
 
-**Última atualização:** 15-11-2025 | 18:21
+**Última atualização:** 15-11-2025 | 18:40
 
 **Autores:** Lucas, André e Ana
 
@@ -114,6 +114,21 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Responsáveis:** [a definir]
 
+### E01-F06: Função que dá baixa nas estadias
+**Descrição:** Essa função dá baixa nas estadias, calculando e mostrando o valor total que deverrá ser pago pelo cliente. Muda automaticamente o status do quarto para desocupado.
+
+**Critérios de aceite:**
+- Precisa receber corretamente o tempo de estadia do hóspede.
+- Precisa calcular o valor total a ser pago pelo cliente.
+- Precisa retornar esse valor corretamente na tela.
+- Precisa automaticamente trocar o status de "ocupado" para "desocupado" dos respectivos quartos.
+
+**Sprint:** [a definir]
+
+**Prioridade:** [a definir]
+
+**Responsáveis:** [a definir]
+
 --- 
 
 # Changelog
@@ -138,3 +153,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 2.5 | 15-11-2025 | 18:21 | Lucas
 - Adicionei funcionalidade de cadastrar estadias.
+
+### 2.6 | 15-11-2025 | 18:40 | Lucas
+- Adicionei funcionalidade de dar baixa em estadias.
