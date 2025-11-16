@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 3.9
+**Versão:** 3.9.1
 
-**Última atualização:** 15-11-2025 | 19:04
+**Última atualização:** 16-11-2025 | 16:31
 
 **Autores:** Lucas, André e Ana
 
@@ -61,6 +61,7 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 **Critérios de aceite:**
 - O sistema deve garantir que não haja dois clientes com o mesmo código.
 - O sistema deve garantir qu não haja dois clientes com exatamente o mesmo nome.
+- O sistema deve garantir que não haja clientes diferentes com mesmo número de telefone, nem funcionários.
 - Telefone deve ser escrito no padrão (xx) xxxx-xxxx.
 - Endereço e nome devem ser armazenados em string.
 
@@ -76,6 +77,7 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 **Critérios de aceite:** 
 - O sistema deve garantir que não haja dois funcionŕios com o mesmo código.
 - O sistema deve garantir que não haja dois funcionários com exatamente o mesmo nome.
+- O sistema deve garantir que não haja dois funcionários com número de telefone iguais (também verificar com os clientes).
 - Telefone deve ser escrito no padrão (xx) xxxx-xxxx.
 - Endereço e nome devem ser armaazenados em string.
 - Salário deve ser guardado em inteiro
@@ -84,13 +86,14 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 **Prioridade:** [a definir]
 
-**Responsáveis:** [a definir]
+**Responsáveis:** [a definir] 
 
 ### E01-F04: Cadastrar quarto
 **Descrição:** Essa função deve cadastrar um quarto, contendo: número do quarto, quantidade de hóspedes, valor da diária e status (desocupado ou ocupado).
 
 **Critérios de aceite:**
 - O sistema deve garantir que não haja dois quartos cadastrados com o mesmo número.
+- Um quarto não pode ter dois status ao mesmo tempo, deve ser ocupado ou desocupado.
 
 **Sprint:** [a definir]
 
@@ -216,3 +219,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 3.9 | 15-11-2025 | 19:04 | Lucas
 - Adicionei novo épico que engloba o requisito geral de persistir com todos os dados do sistema. Segue a mesma formatação do primeiro épico, mas agora com E2-FXX de identificador. Por enquanto criarei sub-funções só para deixar bem claro que vamos dividir todas as informações em arquivos separados e que todas as informações serão devidamente armazenadas no HD.
+
+### 3.9.1 | 16-11-2025 | 16:31 | Lucas
+- Verifiquei se a formatação do documento tava toda seguindo o mesmo padrão e verifiquei também alguns critérios de aceite; adicionei, removi ou editei alguns.
