@@ -1,8 +1,8 @@
 # Assinaturas das funções
 
-**Versão:** 1.0
+**Versão:** 1.3
 
-**Última atualização:** 28-11-2025 | 19:49
+**Última atualização:** 28-11-2025 | 20:21
 
 **Autores:** Lucas, André e Ana
 
