@@ -37,3 +37,19 @@ typedef struct {
     float valor_diaria;
     bool ocupado;  // true = ocupado, false = desocupado
 } Quarto;
+
+## Assinatura das funções
+
+### Épico 01 - Menu principal e principais funcionalidades
+
+## E1-F01 - Exibir Menu
+
+- **Função:** exibirMenuPrincipal.
+
+- **Descrição:** Exibe o menu principal do sistema com todas as opções disponíveis.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** void.
+
+void exibirMenuPrincipal(void);
