@@ -18,3 +18,13 @@ typedef struct {
     char endereco[200];
     char telefone[15];  // Formato: (xx) xxxx-xxxx
 } Cliente;
+
+### Estrutura do funcionário
+
+typedef struct {
+    int codigo;
+    char nome[100];
+    char telefone[15];  // Formato: (xx) xxxx-xxxx
+    char cargo[50];
+    int salario;
+} Funcionario;
