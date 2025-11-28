@@ -28,3 +28,12 @@ typedef struct {
     char cargo[50];
     int salario;
 } Funcionario;
+
+### Estrutura do quarto
+
+typedef struct {
+    int numero;
+    int quantidade_hospedes;
+    float valor_diaria;
+    bool ocupado;  // true = ocupado, false = desocupado
+} Quarto;
