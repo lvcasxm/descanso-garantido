@@ -53,3 +53,13 @@ typedef struct {
 - **Retorno:** void.
 
 void exibirMenuPrincipal(void);
+
+- **Função:** lerOpcaoMenu
+
+- **Descrição:** Lê e valida opção escolhida pelo usuário no menu.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** int - Número da opção escolhida pelo usuário (de 1 a N).
+
+int lerOpcaoMenu(void);
