@@ -54,7 +54,7 @@ typedef struct {
 
 void exibirMenuPrincipal(void);
 
-- **Função:** lerOpcaoMenu
+- **Função:** lerOpcaoMenu.
 
 - **Descrição:** Lê e valida opção escolhida pelo usuário no menu.
 
@@ -63,3 +63,21 @@ void exibirMenuPrincipal(void);
 - **Retorno:** int - Número da opção escolhida pelo usuário (de 1 a N).
 
 int lerOpcaoMenu(void);
+
+## E1-F02 - Cadastrar cliente
+
+- **Função:** cadastrarCliente.
+
+- **Descrição:** Realiza o cadastro completo de um novo cliente no sistema.
+
+- **Parâmetros de entrada:** 
+Cliente: ponteiro para estrutura cliente a ser preenchida.
+
+- **Retorno:** 
+int
+- 0: Cadastro realizado com sucesso.
+- 1: Erro no cadastro (código duplicado).
+- 2: Erro no cadastro (nome duplicado).
+- 3: Erro no cadastro (telefone duplicado).
+
+int cadastrarCliente(Cliente *cliente);
