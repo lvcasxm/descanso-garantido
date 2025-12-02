@@ -38,6 +38,18 @@ typedef struct {
     bool ocupado;  // true = ocupado, false = desocupado
 } Quarto;
 
+### Estrutura da estadia
+
+typedef struct {
+    int codigo_cliente;
+    int numero_quarto;
+    char data_entrada[11];   // Formato: DD/MM/AAAA
+    char data_saida[11];     // Formato: DD/MM/AAAA
+    int quantidade_hospedes;
+    int quantidade_diarias;
+    bool ativa;  // true = ativa, false = finalizada
+} Estadia;
+
 ## Assinatura das funções
 
 ### Épico 01 - Menu principal e principais funcionalidades
