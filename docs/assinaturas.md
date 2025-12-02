@@ -93,3 +93,14 @@ int
 - 3: Erro no cadastro (telefone duplicado).
 
 int cadastrarCliente(Cliente *cliente);
+
+- **Função:** verificarCodigoClienteExiste
+
+- **Descrição:** Verifica se já existe um cliente cadastrado com o código informado.
+
+- **Parâmetros de entrada:** 
+Código: Código do cliente a ser verificado.
+
+- **Retorno:** bool (verdadeiro para se o código já existe, ou falso para caso não exista).
+
+bool verificarCodigoClienteExiste(int codigo);
