@@ -2,7 +2,7 @@
 
 **Versão:** 1.3
 
-**Última atualização:** 28-11-2025 | 20:21
+**Última atualização:** 02-12-2025 | 19:24
 
 **Autores:** Lucas, André e Ana
 
