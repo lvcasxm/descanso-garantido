@@ -104,3 +104,40 @@ Código: Código do cliente a ser verificado.
 - **Retorno:** bool (verdadeiro para se o código já existe, ou falso para caso não exista).
 
 bool verificarCodigoClienteExiste(int codigo);
+
+- **Função:** verificarNomeClienteExiste
+
+- **Descrição:** Verifica se já existe um cliente cadastrado com o mesmo nome.
+
+- **Parâmetros de entrada:** 
+Nome: String contendo o nome a ser verificado.
+
+- **Retorno:** bool (verdadeiro para se o nome já existe, ou falso para caso não exista);
+
+bool verificarNomeClienteExiste(const char *nome);
+
+- **Função:** verificarTelefoneExiste
+
+- **Descrição:** Verifica se o telefone já está cadastrado (clientes ou funcionários)
+
+- **Parâmetros de entrada:**
+ telefone: String contendo o telefone no formato (xx) xxxx-xxxx
+   
+- **Retorno:** bool
+ true: Telefone já cadastrado
+ false: Telefone disponível
+
+bool verificarTelefoneExiste(const char *telefone);
+
+- **Função:** validarFormatoTelefone
+
+- **Descrição:** Valida se o telefone está no formato correto (xx) xxxx-xxxx
+ 
+- **Parâmetros de entrada:**
+ telefone: String contendo o telefone a ser validado
+ 
+- **Retorno: bool**
+true: Formato válido
+false: Formato inválido
+
+bool validarFormatoTelefone(const char *telefone);
