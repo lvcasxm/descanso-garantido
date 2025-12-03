@@ -19,6 +19,7 @@ Criado para o Trabalho Interdisciplinar de Fundamentos de Engenheria de Software
 │   ├── product_backlog.md    Backlog do produto, contendo épicos, funcionalidades e changelog
 │   ├── doc-funcoes.md        Documentação das funções; nome, descrição, parâmetros de entrada e o código em si das funções
 │   ├── plano-testes.md       Organiza a estrutura dos casos de teste do sistema
+│   ├── sprints/              Subpasta da pasta de documentação, que armazena os logs gerados na sprint, por meio de arquivos .md
 ├── media/                    Pasta contendo os arquivos de mídia do projeto, como link do vídeo pitch, PDF's gerados e arquivos que não se relacionam diretamente com o código
 │   ├── 
 │   ├── 
@@ -37,6 +38,7 @@ Criado para o Trabalho Interdisciplinar de Fundamentos de Engenheria de Software
 
 - [Product Backlog](docs/product-backlog.md)
 - [Documentação das funcionalidades](docs/doc-funcoes.md)
+- [Relatório das sprints](docs/sprints)
 
 ## Objetivos e aprendizados
 
