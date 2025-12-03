@@ -141,3 +141,50 @@ true: Formato válido
 false: Formato inválido
 
 bool validarFormatoTelefone(const char *telefone);
+
+## E01-F03: Cadastrar funcionário
+
+int cadastrarFuncionario(Funcionario *funcionario);
+
+- **Função:** cadastrarFuncionario.
+
+- **Descrição:** Realiza o cadastro completo de um novo funcionário no sistema.
+
+- **Parâmetros de entrada:** 
+funcionário: Ponteiro para estrutura funcionário a ser preenchida
+
+- **Retorno:** int
+0: cadastro realizado com sucesso.
+1: erro no cadastro (código duplicado).
+2: erro no cadastro (nome duplicado).
+3: erro no cadastro (telefone duplicado).
+
+- **Retorno:** bool
+true: Código já existe
+false: Código disponível
+
+- **Função:** verificarNomeFuncionarioExiste
+
+bool verificarCodigoFuncionarioExiste
+
+- **Descrição:** Verifica se já existe um funcionário com o código informado.
+
+- **Parâmetros de entrada:** 
+código: Código do funcionário a ser verificado.
+
+- **Retorno:** bool
+true: Código já existe
+false: Código disponível
+
+- **Função:** verificarNomeFuncionarioExiste
+
+bool verificarNomeFuncionarioExiste(const char *nome);
+
+- **Descrição:** Verifica se já existe um funcionário com nome exato.
+
+- **Parâmetros de entrada:** 
+nome: String contendo o nome a ser verificado.
+
+- **Retorno:** bool
+true: Nome já existe
+False: Nome disponível
