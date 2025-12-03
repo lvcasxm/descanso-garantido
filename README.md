@@ -9,36 +9,33 @@ Criado para o Trabalho Interdisciplinar de Fundamentos de Engenheria de Software
 - André Fortini de Melo (2º período)
 - Ana Luiza Cavalcante Oliveira (2º período)
 
-## Explicação de pastas e subpastas
+## Estrutura do projeto | separação de pastas e subpastas
 
-### docs
+├── README.md                 Apresentação e documentação geral do projeto
+├── Makefile                  Automatiza a build do sistema, para evitar digitar manualmente os comandos do gcc
+├── .gitignore                Configuração Git
 
-- **product-backlog.md**: recebe a lista organizada e priorizada de todos os requisitos levantados ao longo do scrum
+├── docs/                     Pasta de documentação específica do projeto, baseada na metodologia Scrum
+│   ├── product_backlog.md    Backlog do produto, contendo épicos, funcionalidades e changelog
+│   ├── doc-funcoes.md        Documentação das funções; nome, descrição, parâmetros de entrada e o código em si das funções
+│   ├── plano-testes.md       Organiza a estrutura dos casos de teste do sistema
+├── media/                    Pasta contendo os arquivos de mídia do projeto, como link do vídeo pitch, PDF's gerados e arquivos que não se relacionam diretamente com o código
+│   ├── 
+│   ├── 
+│   ├──
+│   ├──
+├── src/                      Pasta contendo o código do projeto
+│   ├── main.c                Main do sistema, orquestra a chamada das funções e é o que de fato executa o programa
+└── tests/                    Pasta contendo o log dos testes gerados      
+    ├──
+    ├── 
+    ├── 
+    └──
+```
 
-- **plano-testes.md**: organiza a estrutura dos casos de teste
+## Objetivos e aprendizados
 
-- **doc-funcoes.md**: documenta todas as funções desenvolvidas no projeto
-
-- **assinaturas.md**: guarda a assinatura das funções
-
-
-### src
-
-- **pasta /include/:** contém arquivos .h; cabeçalhos de funções, declaração de structs, constantes globais e demais coisas que serão incluídas no código em si
-
-- **pasta /modules/:** cóntem a implementação real das funções
-
-
-### tests
-
-- **pasta /munit/:** guarda os testes automatizados da ferramenta Mule/MUnit
-
-- **testes-manuais.md**: guarda casos de teste que serão executados manualmente
-
-
-### media
-
-contém link do vídeo pitch, PDFs e demais arquivos que não se relacionam diretamente com o código
+Podemos, ao final do projeto, compreender muito melhor o funcionamento de um time de desenvolvimento real, e todas as nuances que compreendem fazer parte de um, como trabalho em equipe, rotina, cumprir prazos e coisas assim. Pudemos também aprofundar de forma muito concisa nosso conhecimento na metodologia Scrum, visto que pautamos todo desenvolvimento do projeto nela. Além disso, obvicamente, pudemos também nos aprofundar muito na linguagem C, e seus usos no âmbito profissional real.
 
 ## Link do Repositório
 https://github.com/lvcasxm/descanso-garantido
