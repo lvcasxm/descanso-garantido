@@ -33,9 +33,11 @@ Criado para o Trabalho Interdisciplinar de Fundamentos de Engenheria de Software
     └──
 ```
 
+## Documentação
+
+- [Product Backlog](docs/product-backlog.md)
+- [Documentação das funcionalidades](docs/doc-funcoes.md)
+
 ## Objetivos e aprendizados
 
 Podemos, ao final do projeto, compreender muito melhor o funcionamento de um time de desenvolvimento real, e todas as nuances que compreendem fazer parte de um, como trabalho em equipe, rotina, cumprir prazos e coisas assim. Pudemos também aprofundar de forma muito concisa nosso conhecimento na metodologia Scrum, visto que pautamos todo desenvolvimento do projeto nela. Além disso, obvicamente, pudemos também nos aprofundar muito na linguagem C, e seus usos no âmbito profissional real.
-
-## Link do Repositório
-https://github.com/lvcasxm/descanso-garantido
