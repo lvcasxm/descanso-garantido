@@ -10,8 +10,8 @@ Criado para o Trabalho Interdisciplinar de Fundamentos de Engenheria de Software
 - Ana Luiza Cavalcante Oliveira (2º período)
 
 ## Estrutura do projeto | separação de pastas e subpastas
-
-\
+```
+/
 ├── README.md                 Apresentação e documentação geral do projeto
 ├── Makefile                  Automatiza a build do sistema, para evitar digitar manualmente os comandos do gcc
 ├── .gitignore                Configuração Git
