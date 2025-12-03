@@ -1,42 +1,45 @@
 # Descanso Garantido - Trabalho Interdisciplinar
 
-Repositório feito para o Trabalho Interdisciplinar entre Fundamentos de Engenharia de Software e AEDS1, cujo objetivo é desenvolver um software de gestão para um hotel; o sistema contém CRUD feito em C, capaz de cadastrar clientes, funciońarios, quartos e estadias, além de calcular o valor total a ser pago pelos hóspedes, pesquisar hóspedes por nomes e demais outras funções.
+Sistema de gerencimamento desenvolvido em C, que permite cadastrar, editar, pesquisar e excluir clientes, quartos e estadias para o hotel Descanso Garantido. Além disso, o sistema também é capaz de persistir dados por meio de arquivos binários, garantindo que nenhuma informação seja perdida entre sessões de uso. Além disso, o sistema também conta com demais outras funcionalidades mais específicas, como, por exemplo, verificar pontos de fidelidade de cada cliente.
 
-**Integrantes:**
-- Lucas Maia Marques Pinheiro
-- André Fortini de Mello
-- Ana Luiza Cavalcante Oliveira
+Criado para o Trabalho Interdisciplinar de Fundamentos de Engenheria de Software e AEDS1, utilizamos a metodologia Scrum, e asseguramos que todos as diretrizes desse processo fossem cumpridas. Optamos por sprints curtas, de 2-3 dias, e não separamos funções específicas para nenhum dos membros do trio; todos ajudaram a criar e manter a documentação, bem como a escrever o código em si.
 
-## Explicação de pastas e subpastas
+## **Time de desenvolvimento:**
+- Lucas Maia Marques Pinheiro (2º período)
+- André Fortini de Melo (2º período)
+- Ana Luiza Cavalcante Oliveira (2º período)
 
-### docs
+## Estrutura do projeto | separação de pastas e subpastas
+```
+/
+├── README.md                 Apresentação e documentação geral do projeto
+├── Makefile                  Automatiza a build do sistema, para evitar digitar manualmente os comandos do gcc
+├── .gitignore                Configuração Git
+├── docs/                     Pasta de documentação específica do projeto, baseada na metodologia Scrum
+│   ├── product_backlog.md    Backlog do produto, contendo épicos, funcionalidades e changelog
+│   ├── doc-funcoes.md        Documentação das funções; nome, descrição, parâmetros de entrada e o código em si das funções
+│   ├── plano-testes.md       Organiza a estrutura dos casos de teste do sistema
+│   ├── sprints/              Subpasta da pasta de documentação, que armazena os logs gerados na sprint, por meio de arquivos .md
+├── media/                    Pasta contendo os arquivos de mídia do projeto, como link do vídeo pitch, PDF's gerados e arquivos que não se relacionam diretamente com o código
+│   ├── 
+│   ├── 
+│   ├──
+│   ├──
+├── src/                      Pasta contendo o código do projeto
+│   ├── main.c                Main do sistema, orquestra a chamada das funções e é o que de fato executa o programa
+└── tests/                    Pasta contendo o log dos testes gerados      
+    ├──
+    ├── 
+    ├── 
+    └──
+```
 
-- **product-backlog.md**: recebe a lista organizada e priorizada de todos os requisitos levantados ao longo do scrum
+## Documentação
 
-- **plano-testes.md**: organiza a estrutura dos casos de teste
+- [Product Backlog](docs/product-backlog.md)
+- [Documentação das funcionalidades](docs/doc-funcoes.md)
+- [Relatório das sprints](docs/sprints)
 
-- **doc-funcoes.md**: documenta todas as funções desenvolvidas no projeto
+## Objetivos e aprendizados
 
-- **assinaturas.md**: guarda a assinatura das funções
-
-
-### src
-
-- **pasta /include/:** contém arquivos .h; cabeçalhos de funções, declaração de structs, constantes globais e demais coisas que serão incluídas no código em si
-
-- **pasta /modules/:** cóntem a implementação real das funções
-
-
-### tests
-
-- **pasta /munit/:** guarda os testes automatizados da ferramenta Mule/MUnit
-
-- **testes-manuais.md**: guarda casos de teste que serão executados manualmente
-
-
-### media
-
-contém link do vídeo pitch, PDFs e demais arquivos que não se relacionam diretamente com o código
-
-## Link do Repositório
-https://github.com/lvcasxm/descanso-garantido
+Podemos, ao final do projeto, compreender muito melhor o funcionamento de um time de desenvolvimento real, e todas as nuances que compreendem fazer parte de um, como trabalho em equipe, rotina, cumprir prazos e coisas assim. Pudemos também aprofundar de forma muito concisa nosso conhecimento na metodologia Scrum, visto que pautamos todo desenvolvimento do projeto nela. Além disso, obvicamente, pudemos também nos aprofundar muito na linguagem C, e seus usos no âmbito profissional real.
