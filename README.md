@@ -1,11 +1,13 @@
 # Descanso Garantido - Trabalho Interdisciplinar
 
-Repositório feito para o Trabalho Interdisciplinar entre Fundamentos de Engenharia de Software e AEDS1, cujo objetivo é desenvolver um software de gestão para um hotel; o sistema contém CRUD feito em C, capaz de cadastrar clientes, funciońarios, quartos e estadias, além de calcular o valor total a ser pago pelos hóspedes, pesquisar hóspedes por nomes e demais outras funções.
+Sistema de gerencimamento desenvolvido em C, que permite cadastrar, editar, pesquisar e excluir clientes, quartos e estadias para o hotel Descanso Garantido. Além disso, o sistema também é capaz de persistir dados por meio de arquivos binários, garantindo que nenhuma informação seja perdida entre sessões de uso. Além disso, o sistema também conta com demais outras funcionalidades mais específicas, como, por exemplo, verificar pontos de fidelidade de cada cliente.
 
-**Integrantes:**
-- Lucas Maia Marques Pinheiro
-- André Fortini de Melo
-- Ana Luiza Cavalcante Oliveira
+Criado para o Trabalho Interdisciplinar de Fundamentos de Engenheria de Software e AEDS1, utilizamos a metodologia Scrum, e asseguramos que todos as diretrizes desse processo fossem cumpridas. Optamos por sprints curtas, de 2-3 dias, e não separamos funções específicas para nenhum dos membros do trio; todos ajudaram a criar e manter a documentação, bem como a escrever o código em si.
+
+## **Time de desenvolvimento:**
+- Lucas Maia Marques Pinheiro (2º período)
+- André Fortini de Melo (2º período)
+- Ana Luiza Cavalcante Oliveira (2º período)
 
 ## Explicação de pastas e subpastas
 
