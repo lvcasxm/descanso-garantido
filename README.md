@@ -11,10 +11,10 @@ Criado para o Trabalho Interdisciplinar de Fundamentos de Engenheria de Software
 
 ## Estrutura do projeto | separação de pastas e subpastas
 
+\
 ├── README.md                 Apresentação e documentação geral do projeto
 ├── Makefile                  Automatiza a build do sistema, para evitar digitar manualmente os comandos do gcc
 ├── .gitignore                Configuração Git
-
 ├── docs/                     Pasta de documentação específica do projeto, baseada na metodologia Scrum
 │   ├── product_backlog.md    Backlog do produto, contendo épicos, funcionalidades e changelog
 │   ├── doc-funcoes.md        Documentação das funções; nome, descrição, parâmetros de entrada e o código em si das funções
