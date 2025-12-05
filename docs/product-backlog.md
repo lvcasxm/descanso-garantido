@@ -1,8 +1,8 @@
 # Product Backlog
 
-**Versão:** 3.9.1
+**Versão:** 4.9.1
 
-**Última atualização:** 16-11-2025 | 16:31
+**Última atualização:** 05-12-2025 | 19:53
 
 **Autores:** Lucas, André e Ana
 
@@ -65,11 +65,11 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 - Telefone deve ser escrito no padrão (xx) xxxx-xxxx.
 - Endereço e nome devem ser armazenados em string.
 
-**Sprint:** [a definir]
+**Sprint:** Sprint 1
 
-**Prioridade:** [a definir]
+**Prioridade:** Alta
 
-**Responsáveis:** [a definir]
+**Responsáveis:** Ana Luiza Cavalcante
 
 ### E01-F03: Cadastrar funcionário
 **Descrição:** Essa função deve cadastrar os funcionários do hotel, contendo: código, nome, telefone, cargo e salário.
@@ -82,11 +82,11 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 - Endereço e nome devem ser armaazenados em string.
 - Salário deve ser guardado em inteiro
 
-**Sprint:** [a definir]
+**Sprint:** Sprint 1.
 
-**Prioridade:** [a definir]
+**Prioridade:** Alta.
 
-**Responsáveis:** [a definir] 
+**Responsáveis:** Ana Luiza Cavalcante. 
 
 ### E01-F04: Cadastrar quarto
 **Descrição:** Essa função deve cadastrar um quarto, contendo: número do quarto, quantidade de hóspedes, valor da diária e status (desocupado ou ocupado).
@@ -222,3 +222,6 @@ O documento será atualizado sempre que houver mudanças em alguma dessas catego
 
 ### 3.9.1 | 16-11-2025 | 16:31 | Lucas
 - Verifiquei se a formatação do documento tava toda seguindo o mesmo padrão e verifiquei também alguns critérios de aceite; adicionei, removi ou editei alguns.
+
+### 4.9.1 | 05-12-2025 | 19:53 | Lucas
+- Preenchi os campos de sprint, prioridade e autores para as funcionalidades referentes ao cliente e ao funcionário. Elas serão feitas na primeira sprint.
