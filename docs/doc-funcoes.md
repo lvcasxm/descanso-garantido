@@ -2,53 +2,56 @@
 
 **Versão:** 1.3
 
-**Última atualização:** 02-12-2025 | 19:24
+**Última atualização:** 10-12-2025 | 19:43
 
 **Autores:** Lucas, André e Ana
 
-Este arquivo documenta todas as assinaturas das funções que desenvolvemos no projeto, bem como as estruturas de dados também.
+Este arquivo documenta todas as funções que escrevemos ao longo do desenvolvimento do projeto.
 
 ## Estruturas de dados
 
 ### Estrutura do cliente
-
+```c
 typedef struct {
     int codigo;
-    char nome[100];
-    char endereco[200];
-    char telefone[15];  // Formato: (xx) xxxx-xxxx
+    char nome[50];
+    char endereco[100];
+    char telefone[20];
 } Cliente;
+```
 
 ### Estrutura do funcionário
-
+```c
 typedef struct {
     int codigo;
-    char nome[100];
-    char telefone[15];  // Formato: (xx) xxxx-xxxx
-    char cargo[50];
-    int salario;
+    char nome[50];
+    char telefone[20];
+    char cargo[30];
+    float salario;
 } Funcionario;
+```
 
 ### Estrutura do quarto
-
+```c
 typedef struct {
     int numero;
-    int quantidade_hospedes;
-    float valor_diaria;
-    bool ocupado;  // true = ocupado, false = desocupado
+    int qtdHospedes;
+    float valorDiaria;
+    char status[12];
 } Quarto;
+```
 
 ### Estrutura da estadia
-
+```c
 typedef struct {
-    int codigo_cliente;
-    int numero_quarto;
-    char data_entrada[11];   // Formato: DD/MM/AAAA
-    char data_saida[11];     // Formato: DD/MM/AAAA
-    int quantidade_hospedes;
-    int quantidade_diarias;
-    bool ativa;  // true = ativa, false = finalizada
+    int codigoEstadia;
+    char dataEntrada[11];
+    char dataSaida[11];
+    int qtdDiarias;
+    int codigoCliente;
+    int numeroQuarto;
 } Estadia;
+```
 
 ## Assinatura das funções
 
