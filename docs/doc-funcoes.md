@@ -59,7 +59,7 @@ typedef struct {
 
 ## E1-F01 - Exibir Menu
 
-- **Função:** exibirMenuPrincipal.
+- **Função:** void menuPrincipal(void);
 
 - **Descrição:** Exibe o menu principal do sistema com todas as opções disponíveis.
 
@@ -67,21 +67,50 @@ typedef struct {
 
 - **Retorno:** void.
 
-void exibirMenuPrincipal(void);
+```c
+void menuPrincipal() {
+    int opc;
+    do {
+        printf("\n===== SISTEMA HOTEL DG =====\n");
+        printf("1 - Clientes\n");
+        printf("2 - Funcionarios\n");
+        printf("3 - Quartos\n");
+        printf("4 - Estadia\n");
+        printf("0 - Sair\n");
+        printf("Escolha: ");
 
-- **Função:** lerOpcaoMenu.
+        opc = lerInteiro(); 
 
-- **Descrição:** Lê e valida opção escolhida pelo usuário no menu.
+        switch(opc) {
+            case 1: menuClientes(); break;
+            case 2: menuFuncionarios(); break;
+            case 3: menuQuartos(); break;
+            case 4: menuEstadias(); break;
+            case 0: printf("Saindo...\n"); break;
+            default: printf("Opção inválida!\n");
+        }
+
+    } while(opc != 0);
+}
+```
+
+- **Função:** void iniciarSistema(void);
+
+- **Descrição:** Subfunção que serve somente para chamar a função menuPrincipal(), para evitar bugs.
 
 - **Parâmetros de entrada:** Nenhum.
 
-- **Retorno:** int - Número da opção escolhida pelo usuário (de 1 a N).
+- **Retorno:** void
 
-int lerOpcaoMenu(void);
+```c
+void iniciarSistema() {
+    menuPrincipal();
+}
+```
 
 ## E1-F02 - Cadastrar cliente
 
-- **Função:** cadastrarCliente.
+- **Função:** int clienteExiste(void);
 
 - **Descrição:** Realiza o cadastro completo de um novo cliente no sistema.
 
@@ -147,47 +176,129 @@ bool validarFormatoTelefone(const char *telefone);
 
 ## E01-F03: Cadastrar funcionário
 
-int cadastrarFuncionario(Funcionario *funcionario);
+- **Função:** int gerarCodigoFuncionario(void);
 
-- **Função:** cadastrarFuncionario.
+- **Descrição:** Gera um código que servirá de identificação do funcionário que for cadastrado.
 
-- **Descrição:** Realiza o cadastro completo de um novo funcionário no sistema.
+- **Parâmetros de entrada:** Nenhum.
 
-- **Parâmetros de entrada:** 
-funcionário: Ponteiro para estrutura funcionário a ser preenchida
+- **Retorno:** Int (gera um código armazenado numa variável inteira).
 
-- **Retorno:** int
-0: cadastro realizado com sucesso.
-1: erro no cadastro (código duplicado).
-2: erro no cadastro (nome duplicado).
-3: erro no cadastro (telefone duplicado).
+```c
+int gerarCodigoFuncionario() {
+    FILE *f = fopen(ARQUIVO_FUNCIONARIOS, "rb");
+    Funcionario func;
+    int maior = 0;
 
-- **Retorno:** bool
-true: Código já existe
-false: Código disponível
+    if (f) {
+        while (fread(&func, sizeof(Funcionario), 1, f)) {
+            if (func.codigo > maior) maior = func.codigo;
+        }
+        fclose(f);
+    }
 
-- **Função:** verificarNomeFuncionarioExiste
+    return maior + 1;
+}
+```
 
-bool verificarCodigoFuncionarioExiste
+- **Função:** void listarFuncionarios(void);
 
-- **Descrição:** Verifica se já existe um funcionário com o código informado.
+- **Descrição:** Lista todos os funcionários que foram cadastrados pelo sistema.
 
-- **Parâmetros de entrada:** 
-código: Código do funcionário a ser verificado.
+- **Parâmetros de entrada:** Nenhum.
 
-- **Retorno:** bool
-true: Código já existe
-false: Código disponível
+- **Retorno:** Nenhum.
 
-- **Função:** verificarNomeFuncionarioExiste
+```c
+void listarFuncionarios() {
+    FILE *f = fopen(ARQUIVO_FUNCIONARIOS, "rb");
+    if (!f) {
+        printf("\n[!] Nenhum funcionário cadastrado.\n");
+        return;
+    }
 
-bool verificarNomeFuncionarioExiste(const char *nome);
+    Funcionario f1;
+    printf("\n=== FUNCIONÁRIOS CADASTRADOS ===\n");
+    printf("%-10s %-30s %-20s\n", "ID", "NOME", "CARGO");
+    printf("------------------------------------------------------------\n");
 
-- **Descrição:** Verifica se já existe um funcionário com nome exato.
+    while (fread(&f1, sizeof(Funcionario), 1, f)) {
+        printf("%-10d %-30s %-20s\n", f1.codigo, f1.nome, f1.cargo);
+    }
 
-- **Parâmetros de entrada:** 
-nome: String contendo o nome a ser verificado.
+    fclose(f);
+    printf("------------------------------------------------------------\n");
+}
+```
 
-- **Retorno:** bool
-true: Nome já existe
-False: Nome disponível
+- **Função:** void cadastrarFuncionario(void);
+
+- **Descrição:** Função que cadastra o funcionário; requer que o usuário digite nome completo, telefone, cargo e salário.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+
+```c
+void cadastrarFuncionario() {
+    Funcionario f;
+    f.codigo = gerarCodigoFuncionario();
+
+    printf("\n=== NOVO FUNCIONÁRIO | ID: %d ===\n", f.codigo);
+
+    // --- NOME ---
+    do {
+        printf("Nome completo: ");
+        fgets(f.nome, 50, stdin);
+        f.nome[strcspn(f.nome, "\n")] = 0;
+    } while (!validarLetras(f.nome));
+
+    // --- TELEFONE ---
+    do {
+        printf("Telefone (apenas números): ");
+        fgets(f.telefone, 20, stdin);
+        f.telefone[strcspn(f.telefone, "\n")] = 0;
+
+        if (!validarNumeros(f.telefone))
+            printf("[!] Digite apenas números!\n");
+
+    } while (!validarNumeros(f.telefone));
+
+    // --- CARGO ---
+    do {
+        printf("Cargo: ");
+        fgets(f.cargo, 30, stdin);
+        f.cargo[strcspn(f.cargo, "\n")] = 0;
+    } while (!validarLetras(f.cargo));
+
+    // --- SALÁRIO ---
+    char buffer[50];
+    int valido = 0;
+
+    do {
+        printf("Salário: R$ ");
+        fgets(buffer, 50, stdin);
+        buffer[strcspn(buffer, "\n")] = 0;
+
+        valido = 1;
+        for (int i = 0; buffer[i] != '\0'; i++) {
+            if (!isdigit(buffer[i]) && buffer[i] != '.' && buffer[i] != ',') {
+                valido = 0;
+            }
+        }
+
+        if (!valido)
+            printf("[!] Digite apenas números! (exemplo: 2500.50)\n");
+
+    } while (!valido);
+
+    f.salario = atof(buffer);
+
+    FILE *file = fopen(ARQUIVO_FUNCIONARIOS, "ab");
+    if (file) {
+        fwrite(&f, sizeof(Funcionario), 1, file);
+        fclose(file);
+        printf("\n[✓] Funcionário cadastrado com sucesso!\n");
+    }
+}
+```
