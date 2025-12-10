@@ -57,8 +57,6 @@ typedef struct {
 
 ## Épico 01 - Menu principal e principais funcionalidades
 
-### E1-F01 - Exibir Menu
-
 ### - **Função:** void menuPrincipal(void);
 
 - **Descrição:** Exibe o menu principal do sistema com todas as opções disponíveis.
@@ -201,7 +199,7 @@ int gerarCodigoFuncionario() {
 }
 ```
 
-- **Função:** void listarFuncionarios(void);
+### **Função:** void listarFuncionarios(void);
 
 - **Descrição:** Lista todos os funcionários que foram cadastrados pelo sistema.
 
@@ -231,7 +229,7 @@ void listarFuncionarios() {
 }
 ```
 
-- **Função:** void cadastrarFuncionario(void);
+### **Função:** void cadastrarFuncionario(void);
 
 - **Descrição:** Função que cadastra o funcionário; requer que o usuário digite nome completo, telefone, cargo e salário.
 
