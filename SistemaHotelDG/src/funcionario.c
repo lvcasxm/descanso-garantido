@@ -4,7 +4,18 @@
 #include <ctype.h>
 #include "../include/funcionario.h"
 
+// Obrigatório para evitar o bug do menu!
+int lerInteiro();
+
 #define ARQUIVO_FUNCIONARIOS "data/funcionarios.dat"
+
+int validarNumeros(const char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (!isdigit(str[i])) return 0;
+    }
+    return 1;
+}
+
 
 int validarLetras(char *str) {
     for (int i = 0; str[i] != '\0'; i++) {
@@ -17,12 +28,14 @@ int gerarCodigoFuncionario() {
     FILE *f = fopen(ARQUIVO_FUNCIONARIOS, "rb");
     Funcionario func;
     int maior = 0;
+
     if (f) {
         while (fread(&func, sizeof(Funcionario), 1, f)) {
             if (func.codigo > maior) maior = func.codigo;
         }
         fclose(f);
     }
+
     return maior + 1;
 }
 
@@ -52,25 +65,53 @@ void cadastrarFuncionario() {
 
     printf("\n=== NOVO FUNCIONÁRIO | ID: %d ===\n", f.codigo);
 
+    // --- NOME ---
     do {
         printf("Nome completo: ");
-        fflush(stdin);
         fgets(f.nome, 50, stdin);
         f.nome[strcspn(f.nome, "\n")] = 0;
     } while (!validarLetras(f.nome));
 
-    printf("Telefone (apenas números): ");
-    scanf("%s", f.telefone);
+    // --- TELEFONE ---
+    do {
+        printf("Telefone (apenas números): ");
+        fgets(f.telefone, 20, stdin);
+        f.telefone[strcspn(f.telefone, "\n")] = 0;
 
+        if (!validarNumeros(f.telefone))
+            printf("[!] Digite apenas números!\n");
+
+    } while (!validarNumeros(f.telefone));
+
+    // --- CARGO ---
     do {
         printf("Cargo: ");
-        fflush(stdin);
         fgets(f.cargo, 30, stdin);
         f.cargo[strcspn(f.cargo, "\n")] = 0;
     } while (!validarLetras(f.cargo));
 
-    printf("Salário: R$ ");
-    scanf("%f", &f.salario);
+    // --- SALÁRIO ---
+    char buffer[50];
+    int valido = 0;
+
+    do {
+        printf("Salário: R$ ");
+        fgets(buffer, 50, stdin);
+        buffer[strcspn(buffer, "\n")] = 0;
+
+        valido = 1;
+        for (int i = 0; buffer[i] != '\0'; i++) {
+            if (!isdigit(buffer[i]) && buffer[i] != '.' && buffer[i] != ',') {
+                valido = 0;
+            }
+        }
+
+        if (!valido)
+            printf("[!] Digite apenas números! (exemplo: 2500.50)\n");
+
+    } while (!valido);
+
+    f.salario = atof(buffer);
 
     FILE *file = fopen(ARQUIVO_FUNCIONARIOS, "ab");
     if (file) {
@@ -80,31 +121,26 @@ void cadastrarFuncionario() {
     }
 }
 
+
 void pesquisarFuncionario() {
     listarFuncionarios();
+
     FILE *f = fopen(ARQUIVO_FUNCIONARIOS, "rb");
     if (!f) return;
 
-    int opcao;
     printf("\n=== PESQUISAR FUNCIONÁRIO ===\n");
     printf("1 - Buscar por ID\n");
     printf("2 - Buscar por Nome\n");
     printf("Escolha: ");
 
-    if (scanf("%d", &opcao) != 1) {
-        printf("\n[!] Entrada inválida!\n");
-        fflush(stdin);
-        fclose(f);
-        return;
-    }
+    int opcao = lerInteiro();
 
     Funcionario func;
     int achou = 0;
 
     if (opcao == 1) {
-        int cod;
         printf("Informe o ID: ");
-        scanf("%d", &cod);
+        int cod = lerInteiro();
 
         while (fread(&func, sizeof(Funcionario), 1, f)) {
             if (func.codigo == cod) { achou = 1; break; }
@@ -113,7 +149,6 @@ void pesquisarFuncionario() {
     } else if (opcao == 2) {
         char nomeBusca[50];
         printf("Informe o nome: ");
-        fflush(stdin);
         fgets(nomeBusca, 50, stdin);
         nomeBusca[strcspn(nomeBusca, "\n")] = 0;
 
@@ -143,15 +178,11 @@ void pesquisarFuncionario() {
 
 void excluirFuncionario() {
     listarFuncionarios();
-    int cod;
 
     printf("\n=== EXCLUIR FUNCIONÁRIO ===\n");
     printf("Informe o ID para exclusão: ");
 
-    if (scanf("%d", &cod) != 1) {
-        fflush(stdin);
-        return;
-    }
+    int cod = lerInteiro();
 
     FILE *f = fopen(ARQUIVO_FUNCIONARIOS, "rb");
     FILE *temp = fopen("data/temp_func.dat", "wb");
@@ -179,6 +210,7 @@ void excluirFuncionario() {
 
 void menuFuncionarios() {
     int op;
+
     do {
         printf("\n=== MENU DE FUNCIONÁRIOS ===\n");
         printf("1 - Cadastrar Funcionário\n");
@@ -187,12 +219,7 @@ void menuFuncionarios() {
         printf("0 - Voltar ao Menu Anterior\n");
         printf("Escolha: ");
 
-        if (scanf("%d", &op) != 1) {
-            printf("\n[!] Opção inválida!\n");
-            fflush(stdin);
-            op = -1;
-            continue;
-        }
+        op = lerInteiro();   // >>> AQUI ESTÁ O CONCERTA TUDO <<<
 
         switch(op) {
             case 1: cadastrarFuncionario(); break;

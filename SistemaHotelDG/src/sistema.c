@@ -5,14 +5,21 @@
 #include "../include/quarto.h"
 #include "../include/estadia.h"
 
+// Declaração (vem de cliente.c)
+int lerInteiro();
 
 void menuPrincipal() {
     int opc;
     do {
         printf("\n===== SISTEMA HOTEL DG =====\n");
-        printf("1 - Clientes\n2 - Funcionarios\n3 - Quartos\n4 - Estadia\n0 - Sair\nEscolha: ");
+        printf("1 - Clientes\n");
+        printf("2 - Funcionarios\n");
+        printf("3 - Quartos\n");
+        printf("4 - Estadia\n");
+        printf("0 - Sair\n");
+        printf("Escolha: ");
 
-        scanf("%d", &opc);
+        opc = lerInteiro();   // >>> AQUI ESTAVA O PROBLEMA <<<
 
         switch(opc) {
             case 1: menuClientes(); break;
@@ -22,6 +29,7 @@ void menuPrincipal() {
             case 0: printf("Saindo...\n"); break;
             default: printf("Opção inválida!\n");
         }
+
     } while(opc != 0);
 }
 
