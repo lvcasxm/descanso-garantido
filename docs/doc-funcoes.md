@@ -55,11 +55,11 @@ typedef struct {
 
 ## Assinatura das funções
 
-### Épico 01 - Menu principal e principais funcionalidades
+## Épico 01 - Menu principal e principais funcionalidades
 
-## E1-F01 - Exibir Menu
+### E1-F01 - Exibir Menu
 
-- **Função:** void menuPrincipal(void);
+### - **Função:** void menuPrincipal(void);
 
 - **Descrição:** Exibe o menu principal do sistema com todas as opções disponíveis.
 
