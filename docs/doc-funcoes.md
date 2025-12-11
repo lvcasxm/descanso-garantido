@@ -1,8 +1,8 @@
 # Assinaturas das funções
 
-**Versão:** 1.3
+**Versão:** 5.3
 
-**Última atualização:** 10-12-2025 | 19:43
+**Última atualização:** 10-12-2025 | 21:09
 
 **Autores:** Lucas, André e Ana
 
@@ -107,70 +107,6 @@ void iniciarSistema() {
 ```
 
 ## E1-F02 - Cadastrar cliente
-
-- **Função:** int clienteExiste(void);
-
-- **Descrição:** Realiza o cadastro completo de um novo cliente no sistema.
-
-- **Parâmetros de entrada:** 
-Cliente: ponteiro para estrutura cliente a ser preenchida.
-
-- **Retorno:** 
-int
-- 0: Cadastro realizado com sucesso.
-- 1: Erro no cadastro (código duplicado).
-- 2: Erro no cadastro (nome duplicado).
-- 3: Erro no cadastro (telefone duplicado).
-
-int cadastrarCliente(Cliente *cliente);
-
-- **Função:** verificarCodigoClienteExiste
-
-- **Descrição:** Verifica se já existe um cliente cadastrado com o código informado.
-
-- **Parâmetros de entrada:** 
-Código: Código do cliente a ser verificado.
-
-- **Retorno:** bool (verdadeiro para se o código já existe, ou falso para caso não exista).
-
-bool verificarCodigoClienteExiste(int codigo);
-
-- **Função:** verificarNomeClienteExiste
-
-- **Descrição:** Verifica se já existe um cliente cadastrado com o mesmo nome.
-
-- **Parâmetros de entrada:** 
-Nome: String contendo o nome a ser verificado.
-
-- **Retorno:** bool (verdadeiro para se o nome já existe, ou falso para caso não exista);
-
-bool verificarNomeClienteExiste(const char *nome);
-
-- **Função:** verificarTelefoneExiste
-
-- **Descrição:** Verifica se o telefone já está cadastrado (clientes ou funcionários)
-
-- **Parâmetros de entrada:**
- telefone: String contendo o telefone no formato (xx) xxxx-xxxx
-   
-- **Retorno:** bool
- true: Telefone já cadastrado
- false: Telefone disponível
-
-bool verificarTelefoneExiste(const char *telefone);
-
-- **Função:** validarFormatoTelefone
-
-- **Descrição:** Valida se o telefone está no formato correto (xx) xxxx-xxxx
- 
-- **Parâmetros de entrada:**
- telefone: String contendo o telefone a ser validado
- 
-- **Retorno: bool**
-true: Formato válido
-false: Formato inválido
-
-bool validarFormatoTelefone(const char *telefone);
 
 ## E01-F03: Cadastrar funcionário
 
@@ -522,6 +458,349 @@ void menuQuartos() {
             case 0: break;
             default: printf("[!] Opção inválida!\n");
         }
+
+    } while (op != 0);
+}
+```
+
+## E01-F05: Cadastrar estadia
+
+### **Função:** *static* int lerInteiroNaoNegativo(void);
+
+- **Descrição:** Garante a leitura de um número do tipo inteiro positivo, para ser usado nas demais funcionalidades desse módulo.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Int (retorna um valor do tipo inteiro, que será utilizado nas demais funcionalidades desse módulo).
+```c
+static int lerIntNaoNegativo() {
+    char buffer[128];
+    int valor;
+    while (1) {
+        if (!fgets(buffer, sizeof(buffer), stdin)) continue;
+        if (sscanf(buffer, "%d", &valor) == 1 && valor >= 0) return valor;
+        printf("Entrada inválida! Digite um número inteiro não negativo: ");
+    }
+}
+```
+
+### **Função:** void lerData(int *dia, int *mes, int *ano);
+
+- **Descrição:** Função que lê os valores que serão correspondentes as datas de início e de saída da estadia, para ser usada na funcionalidade de checkout.
+
+- **Parâmetros de entrada:** int *dia, int *mes, int *ano (ponteiros que guardam os valores dessas informações).
+
+- **Retorno:** Nenhum.
+```c
+static void lerData(int *dia, int *mes, int *ano) {
+    char buffer[256];
+    int d, m, a;
+    while (1) {
+        if (!fgets(buffer, sizeof(buffer), stdin)) continue;
+        if (sscanf(buffer, "%d %d %d", &d, &m, &a) == 3 &&
+            d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1900) {
+            *dia = d; *mes = m; *ano = a;
+            return;
+        }
+        printf("Data inválida! Digite novamente (DD MM AAAA): ");
+    }
+}
+```
+
+### **Função:** int lerOpcaoMenu(void);
+
+- **Descrição:** Lê a opção digitada pelo usuário no menu de opções deste módulo, garantindo que haja limpeza de buffer e que o menu permaneça aparecendo mesmo que o usuário digite um valor que não seja o número correspodente a alguma das opções.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Int (retorna um valor inteiro correspondete a opção escolhida pelo usuário).
+```c
+static int lerOpcaoMenu() {
+    char buffer[64];
+    int op;
+    while (1) {
+        if (!fgets(buffer, sizeof(buffer), stdin)) continue;
+        if (sscanf(buffer, "%d", &op) == 1) return op;
+        printf("Opção inválida, tente novamente: ");
+    }
+}
+```
+
+### **Função:** int validarCLiente (int id);
+
+- **Descrição:** Função que garante que dois clientes não existam com o mesmo ID.
+
+- **Parâmetros de entrada:** int id (usado para verificar que não há outro usuário com esse mesmo ID).
+
+- **Retorno:** Int (retorna 1 para caso o ID exista em dois usuários, e 0 para caso não haja correspondências).
+```c
+int validarCliente(int id) {
+    FILE *f = fopen(ARQUIVO_CLIENTES, "rb");
+    if (!f) return 0;
+    Cliente c;
+    while (fread(&c, sizeof(Cliente), 1, f)) {
+        if (c.codigo == id) { fclose(f); return 1; }
+    }
+    fclose(f);
+    return 0;
+}
+```
+
+### **Função:** int calcularDiferencaDias(int d1, int m1, int a1, int d2, int m2, int a2);
+
+- **Descrição:** Função que recebe as datas de entrada e de saída do hóspede, e calcula quantos dias se passaram, para que seja feito cálculo de quanto ele deverá pagar.
+
+- **Parãmetros de entrada:** int d1, int m1, int a1, int d2, int m2, int a2 (valores correspondentes as datas de entrada e de saída do hóspede, identificadas por 1 e 2, respectivamente).
+
+- **Retorno:** Int (gera um número inteiro, positivo, correspondente a diferença entre datas).
+```c
+int calcularDiferencaDias(int d1, int m1, int a1, int d2, int m2, int a2) {
+    struct tm entrada = {0}, saida = {0};
+
+    entrada.tm_mday = d1;
+    entrada.tm_mon = m1 - 1;
+    entrada.tm_year = a1 - 1900;
+    entrada.tm_hour = 12;
+
+    saida.tm_mday = d2;
+    saida.tm_mon = m2 - 1;
+    saida.tm_year = a2 - 1900;
+    saida.tm_hour = 12;
+
+    time_t t1 = mktime(&entrada);
+    time_t t2 = mktime(&saida);
+
+    if (t1 == -1 || t2 == -1) return -1;
+    double segundos = difftime(t2, t1);
+    int dias = (int)(segundos / (60 * 60 * 24));
+    return dias > 0 ? dias : -1;
+}
+```
+
+### **Função:** *static* int gerarCodigoEstadia(void);
+
+- **Descrição:** Gera um ID no cadastro da estadia, para que seja possível identificá-la depois.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Int (retorna um valor inteiro, positivo, correspondente ao ID da estadia).
+
+### **Função:** void cadastrarEstadia(void);
+
+- **Descrição:** Função que cadastra a estadia, solicita código do cliente, datas de entrada e saída e quantidade de hóspedes.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void cadastrarEstadia() {
+    int codCli, dE, mE, aE, dS, mS, aS, hospedes;
+
+    printf("\n=== CADASTRO DE ESTADIA ===\n");
+    printf("Informe o código do cliente: ");
+    codCli = lerIntNaoNegativo();
+
+    if (!validarCliente(codCli)) {
+        printf("\n[!] Cliente de código %d não encontrado!\n", codCli);
+        listarClientes();
+        return;
+    }
+
+    printf("Data de entrada (DD MM AAAA): ");
+    lerData(&dE, &mE, &aE);
+
+    printf("Data de saída (DD MM AAAA): ");
+    lerData(&dS, &mS, &aS);
+
+    int dias = calcularDiferencaDias(dE, mE, aE, dS, mS, aS);
+    if (dias <= 0) {
+        printf("[!] Período inválido. A saída deve ser depois da entrada.\n");
+        return;
+    }
+
+    printf("Quantidade de hóspedes: ");
+    hospedes = lerIntNaoNegativo();
+    if (hospedes <= 0) {
+        printf("[!] Número de hóspedes deve ser maior que zero.\n");
+        return;
+    }
+
+    // abre quartos e procura um disponível
+    FILE *fQ = fopen(ARQUIVO_QUARTOS, "rb+");
+    if (!fQ) { printf("[!] Não foi possível acessar cadastro de quartos.\n"); return; }
+
+    Quarto q;
+    int achei = 0;
+    int numeroEscolhido = -1;
+
+    while (fread(&q, sizeof(Quarto), 1, fQ)) {
+        if (strcmp(q.status, "desocupado") == 0 && q.qtdHospedes >= hospedes) {
+            // marca o quarto como ocupado e grava
+            strcpy(q.status, "ocupado");
+            fseek(fQ, -sizeof(Quarto), SEEK_CUR);
+            fwrite(&q, sizeof(Quarto), 1, fQ);
+            numeroEscolhido = q.numero;
+            achei = 1;
+            break;
+        }
+    }
+    fclose(fQ);
+
+    if (!achei) {
+        printf("[!] Nenhum quarto disponível para %d hóspede(s).\n", hospedes);
+        return;
+    }
+
+    // cria e grava a estadia no arquivo de estadias
+    Estadia e;
+    e.codigoEstadia = gerarCodigoEstadia();
+    e.codigoCliente = codCli;
+    e.numeroQuarto = numeroEscolhido;
+    e.qtdDiarias = dias;
+    // se sua struct tiver campos de data, atribua-os aqui também (opcional)
+
+    FILE *fE = fopen(ARQUIVO_ESTADIAS, "ab");
+    if (!fE) {
+        printf("[!] Erro ao gravar estadia.\n");
+        // caso gravar falhe, seria bom "desocupar" o quarto; implemento se quiser
+        return;
+    }
+    fwrite(&e, sizeof(Estadia), 1, fE);
+    fclose(fE);
+
+    printf("\n[✓] Estadia registrada (ID %d) no quarto %d para %d diária(s).\n",
+           e.codigoEstadia, e.numeroQuarto, e.qtdDiarias);
+}
+```
+
+### **Função:** void finalizarEstadia(void);
+
+- **Descrição:** Função que dá checkout na estadia, liberando o quarto e calculando quanto o cliente deverá pagar.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void finalizarEstadia() {
+    int id;
+    printf("\n=== FINALIZAR ESTADIA ===\n");
+    printf("Informe o ID da estadia para check-out: ");
+    id = lerIntNaoNegativo();
+
+    FILE *fE = fopen(ARQUIVO_ESTADIAS, "rb");
+    if (!fE) { printf("[!] Nenhuma estadia registrada.\n"); return; }
+
+    Estadia e;
+    int acheiE = 0;
+    while (fread(&e, sizeof(Estadia), 1, fE)) {
+        if (e.codigoEstadia == id) { acheiE = 1; break; }
+    }
+    fclose(fE);
+
+    if (!acheiE) {
+        printf("[!] ID de estadia inválido.\n");
+        return;
+    }
+
+    // abre quartos e libera o quarto usado pela estadia
+    FILE *fQ = fopen(ARQUIVO_QUARTOS, "rb+");
+    if (!fQ) { printf("[!] Erro ao acessar quartos.\n"); return; }
+
+    Quarto q;
+    int achouQ = 0;
+    while (fread(&q, sizeof(Quarto), 1, fQ)) {
+        if (q.numero == e.numeroQuarto) {
+            // mostra resumo e libera o quarto
+            printf("\n=== RESUMO DO CHECK-OUT ===\n");
+            printf("Quarto: %d | Diárias: %d\n", q.numero, e.qtdDiarias);
+            printf("Valor total a pagar: R$ %.2f\n", e.qtdDiarias * q.valorDiaria);
+
+            strcpy(q.status, "desocupado");
+            fseek(fQ, -sizeof(Quarto), SEEK_CUR);
+            fwrite(&q, sizeof(Quarto), 1, fQ);
+            achouQ = 1;
+            break;
+        }
+    }
+    fclose(fQ);
+
+    if (!achouQ) {
+        printf("[!] Não foi possível localizar o quarto dessa estadia.\n");
+    }
+
+    // opcional: marcar estadia como finalizada no arquivo (requere estrutura com flag)
+}
+```
+
+### **Função:** void listarEstadiasPorCliente(void);
+
+- **Descrição:** Função que lista todas as estadias que estão e que foram alugadas por um cliente.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void listarEstadiasPorCliente() {
+    int codCli;
+    printf("\nInforme o código do cliente para visualizar o histórico: ");
+    codCli = lerIntNaoNegativo();
+
+    FILE *f = fopen(ARQUIVO_ESTADIAS, "rb");
+    if (!f) {
+        printf("[!] Nenhuma estadia registrada no sistema.\n");
+        return;
+    }
+
+    Estadia e;
+    int encontrou = 0;
+    int totalPonto = 0;
+
+    printf("\n=== HISTÓRICO DE ESTADIAS DO CLIENTE %d ===\n", codCli);
+    printf("%-10s %-10s %-10s\n", "ID", "Quarto", "Diárias");
+    printf("------------------------------------------\n");
+
+    while (fread(&e, sizeof(Estadia), 1, f)) {
+        if (e.codigoCliente == codCli) {
+            printf("%-10d %-10d %-10d\n", e.codigoEstadia, e.numeroQuarto, e.qtdDiarias);
+            totalPonto += (e.qtdDiarias * 10);
+            encontrou = 1;
+        }
+    }
+
+    if (encontrou) {
+        printf("------------------------------------------\n");
+        printf("Total de pontos acumulados: %d\n", totalPonto);
+    } else {
+        printf("[!] Nenhuma estadia encontrada para esse cliente.\n");
+    }
+
+    fclose(f);
+}
+```
+
+### **Função:** void menuEstadias(void);
+
+- **Descrição:** Função que exibe o menu com todas as funcionalidades do módulo de estadias.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void menuEstadias() {
+    int op;
+    do {
+        printf("\n=== MENU DE ESTADIAS ===\n");
+        printf("1 - Reservar estadia\n");
+        printf("2 - Finalizar estadia (Check-out)\n");
+        printf("3 - Consultar histórico do cliente\n");
+        printf("0 - Voltar ao menu anterior\n");
+        printf("Opção desejada: ");
+        op = lerOpcaoMenu();
+
+        if (op == 1) cadastrarEstadia();
+        else if (op == 2) finalizarEstadia();
+        else if (op == 3) listarEstadiasPorCliente();
+        else if (op != 0) printf("Opção inválida.\n");
 
     } while (op != 0);
 }
