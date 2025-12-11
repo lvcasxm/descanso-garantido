@@ -108,6 +108,323 @@ void iniciarSistema() {
 
 ## E1-F02 - Cadastrar cliente
 
+### **Função:** void limparBuffer(void);
+
+- **Descrição:** Função que limpa o buffer, escrita para ser usada nas demais funcionalidades deste módulo.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void limparBuffer() {
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
+}
+```
+
+### **Função:** int lerInteiro(void);
+
+- **Descrição:** Função que garante leitura de um número inteiro, positivo, para ser usado nas demais funcionalidades desse módulo.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Int (retorna um valor do tipo inteiro apto para ser utilizado nas demais funcionalidades).
+```c
+int lerInteiro() {
+    char buffer[50];
+
+    fgets(buffer, 50, stdin);
+
+    buffer[strcspn(buffer, "\n")] = 0;
+
+    for (int i = 0; buffer[i] != '\0'; i++) {
+        if (buffer[i] < '0' || buffer[i] > '9') {
+            return -1;
+        }
+    }
+
+    return atoi(buffer);
+}
+```
+
+### **Função:** int ehSomenteNumero(const char *str);
+
+- **Descrição:** Garante que o número inserido seja somente um número, vedando símbolos.
+
+- **Parâmetros de entrada:** const char *str (recebe quaisquer coisas digitadas, que não sejam números, pelo usuário).
+
+- **Retorno:** Int (caso o usuário tenha digitado algo que não seja um número válido, a função retorna 1, e, para caso o usuário tenha digitado um número válido, ela retorna 0).
+```c
+int ehSomenteNumero(const char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] < '0' || str[i] > '9') return 0;
+    }
+    return 1;
+}
+```
+
+### **Função:** int clienteExiste(const char *nome, const char *telefone);
+
+- **Descrição:** Função valida se o cliente já existe, recebendo suas informações de nome e telefone.
+
+- **Parâmetros de entrada:** const char *nome, const char *telefone (a função recebe o nome e o telefone do cliente, para verificar que não haja outro cliente com essas mesmas informações).
+
+- **Retorno:** Int (retorna 1 se caso exista outro cliente exista com essas mesmas informações, e 0 para caso não exista).
+```c
+int clienteExiste(const char *nome, const char *telefone) {
+    FILE *f = fopen(ARQUIVO_CLIENTES, "rb");
+    if (!f) return 0;
+
+    Cliente c;
+    while (fread(&c, sizeof(Cliente), 1, f)) {
+        if (strcasecmp(c.nome, nome) == 0 || strcasecmp(c.telefone, telefone) == 0) {
+            fclose(f);
+            return 1;
+        }
+    }
+
+    fclose(f);
+    return 0;
+}
+```
+
+### **Função:** int gerarCodigoCliente(void);
+
+- **Descrição:** Função que gera um ID no momento do cadastro de cada cliente, para que seja possível identificá-lo.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Int (retorna um valor inteiro, positivo, correspondente ao ID do novo cliente).
+```c
+int gerarCodigoCliente() {
+    FILE *f = fopen(ARQUIVO_CLIENTES, "rb");
+    Cliente c;
+    int maior = 0;
+    if (f) {
+        while (fread(&c, sizeof(Cliente), 1, f)) {
+            if (c.codigo > maior) maior = c.codigo;
+        }
+        fclose(f);
+    }
+    return maior + 1;
+}
+```
+
+### **Função:** void listarClientes(void);
+
+- **Descrição:** Função que lista todos os clientes que foram cadastrados no sistema.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void listarClientes() {
+    FILE *f = fopen(ARQUIVO_CLIENTES, "rb");
+    if (!f) {
+        printf("\n[!] Nenhum cliente cadastrado.\n");
+        return;
+    }
+
+    Cliente c;
+    printf("\n=== LISTA DE CLIENTES ===\n");
+    printf("%-10s %-30s\n", "CODIGO", "NOME");
+    printf("------------------------------------------\n");
+
+    while (fread(&c, sizeof(Cliente), 1, f)) {
+        printf("%-10d %-30s\n", c.codigo, c.nome);
+    }
+
+    fclose(f);
+    printf("------------------------------------------\n");
+}
+```
+
+### **Função:** void cadastrarCliente(void);
+
+- **Descrição:** Função que cadastra o cliente; solicita nome, endereço e telefone.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void cadastrarCliente() {
+    Cliente c;
+    c.codigo = gerarCodigoCliente();
+
+    printf("\n=== CADASTRAR CLIENTE (ID: %d) ===\n", c.codigo);
+
+    printf("Nome: ");
+    fgets(c.nome, 50, stdin);
+    c.nome[strcspn(c.nome, "\n")] = 0;
+
+    printf("Endereco: ");
+    fgets(c.endereco, 100, stdin);
+    c.endereco[strcspn(c.endereco, "\n")] = 0;
+
+    printf("Telefone (somente números): ");
+    fgets(c.telefone, 20, stdin);
+    c.telefone[strcspn(c.telefone, "\n")] = 0;
+
+    if (!ehSomenteNumero(c.telefone)) {
+        printf("[!] Telefone invalido. Apenas numeros.\n");
+        return;
+    }
+
+    if (clienteExiste(c.nome, c.telefone)) {
+        printf("\n[!] Cliente já cadastrado.\n");
+        return;
+    }
+
+    FILE *f = fopen(ARQUIVO_CLIENTES, "ab");
+    if (f) {
+        fwrite(&c, sizeof(Cliente), 1, f);
+        fclose(f);
+        printf("\n[+] Cliente cadastrado com sucesso!\n");
+    } else {
+        printf("\n[!] Erro ao salvar. Verifique a pasta 'data'.\n");
+    }
+}
+```
+
+### **Função:** void pesquisarCliente(void);
+
+- **Descrição:** Função que lista todos os clientes que foram cadastrados no sistema.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void pesquisarCliente() {
+    listarClientes();
+
+    FILE *f = fopen(ARQUIVO_CLIENTES, "rb");
+    if (!f) return;
+
+    printf("\nPesquisar por:\n1 - Codigo\n2 - Nome\nEscolha: ");
+    int opcao = lerInteiro();
+
+    Cliente c;
+    int encontrado = 0;
+
+    if (opcao == 1) {
+        printf("Digite o codigo: ");
+        int cod = lerInteiro();
+
+        while (fread(&c, sizeof(Cliente), 1, f)) {
+            if (c.codigo == cod) { encontrado = 1; break; }
+        }
+
+    } else if (opcao == 2) {
+        char nomeBusca[50];
+        printf("Digite o nome: ");
+        fgets(nomeBusca, 50, stdin);
+        nomeBusca[strcspn(nomeBusca, "\n")] = 0;
+
+        while (fread(&c, sizeof(Cliente), 1, f)) {
+            if (strcasecmp(c.nome, nomeBusca) == 0) { encontrado = 1; break; }
+        }
+
+    } else {
+        printf("\nOpcao invalida.\n");
+        fclose(f);
+        return;
+    }
+
+    fclose(f);
+
+    if (encontrado) {
+        printf("\n=== CLIENTE ENCONTRADO ===\n");
+        printf("ID:       %d\n", c.codigo);
+        printf("Nome:     %s\n", c.nome);
+        printf("Endereco: %s\n", c.endereco);
+        printf("Telefone: %s\n", c.telefone);
+    } else {
+        printf("\nCliente nao encontrado.\n");
+    }
+}
+```
+
+### **Função:** void excluirCliente(void);
+
+- **Descrição:** Função que exclui um cliente que foi cadastrado no sistema.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void excluirCliente() {
+    listarClientes();
+
+    printf("\nDigite o codigo para excluir: ");
+    int cod = lerInteiro();
+    if (cod < 0) {
+        printf("\n[!] Codigo invalido.\n");
+        return;
+    }
+
+    FILE *f = fopen(ARQUIVO_CLIENTES, "rb");
+    if (!f) return;
+
+    FILE *temp = fopen("data/temp.dat", "wb");
+    if (!temp) {
+        fclose(f);
+        return;
+    }
+
+    Cliente c;
+    int encontrado = 0;
+
+    while (fread(&c, sizeof(Cliente), 1, f)) {
+        if (c.codigo == cod) {
+            encontrado = 1;
+        } else {
+            fwrite(&c, sizeof(Cliente), 1, temp);
+        }
+    }
+
+    fclose(f);
+    fclose(temp);
+
+    remove(ARQUIVO_CLIENTES);
+    rename("data/temp.dat", ARQUIVO_CLIENTES);
+
+    if (encontrado)
+        printf("\n[+] Cliente removido.\n");
+    else
+        printf("\n[!] Codigo nao encontrado.\n");
+}
+```
+
+### **Função:** menuClientes(void);
+
+- **Descrição:** Função que exibe o menu com todas as opções correspondentes a cada uma das funcionalidades desse módulo.
+
+- **Parâmetros de entrada:** Nenhum.
+
+- **Retorno:** Nenhum.
+```c
+void menuClientes() {
+    int op;
+    do {
+        printf("\n=== MENU CLIENTES ===\n");
+        printf("1 - Cadastrar\n");
+        printf("2 - Pesquisar\n");
+        printf("3 - Excluir\n");
+        printf("0 - Voltar\n");
+        printf("Escolha: ");
+        op = lerInteiro();
+
+        switch(op) {
+            case 1: cadastrarCliente(); break;
+            case 2: pesquisarCliente(); break;
+            case 3: excluirCliente(); break;
+            case 0: break;
+            default: printf("Opcao invalida!\n");
+        }
+    } while (op != 0);
+}
+```
+
 ## E01-F03: Cadastrar funcionário
 
 ### **Função:** int gerarCodigoFuncionario(void);
